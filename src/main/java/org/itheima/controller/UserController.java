@@ -4,12 +4,16 @@ import jakarta.validation.constraints.Pattern;
 import org.itheima.pojo.Result;
 import org.itheima.pojo.User;
 import org.itheima.service.UserService;
+import org.itheima.utils.JwtUtil;
 import org.itheima.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @Validated
@@ -35,7 +39,11 @@ public class UserController {
             return Result.error("用户名错误");
         }else{
             if(u.getPassword().equals(Md5Util.getMD5String(password))){
-                return Result.success("jwt token");
+                Map<String, Object> claims = new HashMap<>();
+                claims.put("id", u.getId());
+                claims.put("username", u.getUsername());
+                String token = JwtUtil.genToken(claims);
+                return Result.success(token);
             }else{
                 return Result.error("密码错误");
             }

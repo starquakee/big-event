@@ -9,6 +9,7 @@ import org.itheima.utils.JwtUtil;
 import org.itheima.utils.Md5Util;
 import org.itheima.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,6 +74,27 @@ public class UserController {
     @PatchMapping("updateAvatar")
     public Result updateAvatar(@RequestParam @URL String avatarUrl) {
         userService.updateAvatar(avatarUrl);
+        return Result.success();
+    }
+
+    @PatchMapping("updatePwd")
+    public Result updatePwd(@RequestBody Map<String,String> params) {
+        String oldPwd = params.get("old_pwd");
+        String newPwd = params.get("new_pwd");
+        String rePwd = params.get("re_pwd");
+        if(!StringUtils.hasLength(oldPwd) || !StringUtils.hasLength(newPwd) || !StringUtils.hasLength(rePwd)){
+            return Result.error("缺少必要参数");
+        }
+        Map<String,Object> claims = ThreadLocalUtil.get();
+        String username = (String) claims.get("username");
+        User u = userService.findByUsername(username);
+        if(!u.getPassword().equals(Md5Util.getMD5String(oldPwd))){
+            return Result.error("原密码错误");
+        }
+        if(!newPwd.equals(rePwd)){
+            return Result.error("两次填写密码不一致");
+        }
+        userService.updatePwd(newPwd);
         return Result.success();
     }
 }

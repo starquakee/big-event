@@ -4,3 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/big_event
     username: root
     password: 030409
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰和下划线自动转换

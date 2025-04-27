@@ -9,6 +9,7 @@ import org.itheima.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,6 +48,18 @@ public class UserController {
             }else{
                 return Result.error("密码错误");
             }
+        }
+    }
+
+    @RequestMapping("userInfo")
+    public Result<User> userInfo(@RequestHeader(name = "Authorization") String token) {
+        try {
+            Map<String, Object> claims = JwtUtil.parseToken(token);
+            String username = (String) claims.get("username");
+            User u = userService.findByUsername(username);
+            return Result.success(u);
+        } catch (Exception e) {
+            return Result.error("未登录");
         }
     }
 }

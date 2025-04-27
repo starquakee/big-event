@@ -9,10 +9,7 @@ import org.itheima.utils.Md5Util;
 import org.itheima.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,5 +61,11 @@ public class UserController {
         } catch (Exception e) {
             return Result.error("未登录");
         }
+    }
+
+    @PutMapping("/update")
+    public Result update(@RequestBody User user) {
+        userService.update(user);
+        return Result.success();
     }
 }

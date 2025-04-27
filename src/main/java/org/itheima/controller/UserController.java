@@ -1,6 +1,7 @@
 package org.itheima.controller;
 
 import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.URL;
 import org.itheima.pojo.Result;
 import org.itheima.pojo.User;
 import org.itheima.service.UserService;
@@ -66,6 +67,12 @@ public class UserController {
     @PutMapping("/update")
     public Result update(@RequestBody @Validated User user) {
         userService.update(user);
+        return Result.success();
+    }
+
+    @PatchMapping("updateAvatar")
+    public Result updateAvatar(@RequestParam @URL String avatarUrl) {
+        userService.updateAvatar(avatarUrl);
         return Result.success();
     }
 }

@@ -31,4 +31,11 @@ public class CategoryServiceImpl implements CategoryService {
         Integer id = (Integer) claims.get("id");
         return categoryMapper.list(id);
     }
+
+    @Override
+    public Category findById(Integer id) {
+        Category category = categoryMapper.findById(id);
+        return category;
+
+    }
 }

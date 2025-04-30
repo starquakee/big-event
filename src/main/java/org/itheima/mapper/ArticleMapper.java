@@ -2,6 +2,8 @@ package org.itheima.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.itheima.pojo.Article;
 
 import java.util.List;
@@ -13,4 +15,21 @@ public interface ArticleMapper {
     void add(Article article);
 
     List<Article> list(Integer userId, Integer categoryId, String state);
+
+    // or 动态SQL
+//    @Select({
+//            "<script>",
+//            "  SELECT * FROM article",
+//            "  <where>",
+//            "    <if test='categoryId != null'>",
+//            "      category_id = #{categoryId}",
+//            "    </if>",
+//            "    <if test='state != null'>",
+//            "      AND state = #{state}",
+//            "    </if>",
+//            "    AND create_user = #{userId}",
+//            "  </where>",
+//            "</script>"
+//    })
+//    List<Article> list( Integer userId, Integer categoryId, String state);
 }

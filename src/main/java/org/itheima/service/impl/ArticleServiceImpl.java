@@ -44,4 +44,9 @@ public class ArticleServiceImpl implements ArticleService {
         pageBean.setItems(page.getResult()); //当前页数据
         return pageBean;
     }
+
+    @Override
+    public Article findById(Integer id) {
+        return articleMapper.findById(id);
+    }
 }

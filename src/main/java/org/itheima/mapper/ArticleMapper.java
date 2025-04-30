@@ -15,7 +15,6 @@ public interface ArticleMapper {
     void add(Article article);
 
     List<Article> list(Integer userId, Integer categoryId, String state);
-
     // or 动态SQL
 //    @Select({
 //            "<script>",
@@ -32,4 +31,6 @@ public interface ArticleMapper {
 //            "</script>"
 //    })
 //    List<Article> list( Integer userId, Integer categoryId, String state);
+    @Select("select * from article where id=#{id}")
+    Article findById(Integer id);
 }

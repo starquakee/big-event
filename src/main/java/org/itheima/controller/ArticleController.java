@@ -34,4 +34,10 @@ public class ArticleController {
         return Result.success(pageBean);
     }
 
+    @GetMapping("/detail")
+    public Result<Article> detail(@RequestParam Integer id) {
+        Article article = articleService.findById(id);
+        return Result.success(article);
+    }
+
 }

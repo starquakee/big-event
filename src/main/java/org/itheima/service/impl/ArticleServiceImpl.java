@@ -49,4 +49,10 @@ public class ArticleServiceImpl implements ArticleService {
     public Article findById(Integer id) {
         return articleMapper.findById(id);
     }
+
+    @Override
+    public void update(Article article) {
+        article.setUpdateTime(LocalDateTime.now());
+        articleMapper.update(article);
+    }
 }

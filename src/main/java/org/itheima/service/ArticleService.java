@@ -10,4 +10,6 @@ public interface ArticleService {
     PageBean<Article> list(Integer pageNum, Integer pageSize, Integer categoryId, String state);
 
     Article findById(Integer id);
+
+    void update(Article article);
 }

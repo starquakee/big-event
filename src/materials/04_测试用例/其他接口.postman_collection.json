@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "3ec83f55-b8a7-4998-8dfc-c30fb7084b4e",
+		"name": "其他接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18405889",
+		"_collection_link": "https://blue-meadow-185664.postman.co/workspace/big-event~c69b9393-9546-4bde-a23a-fd711feb90b3/collection/18405889-3ec83f55-b8a7-4998-8dfc-c30fb7084b4e?action=share&source=collection_link&creator=18405889"
+	},
+	"item": [
+		{
+			"name": "文件上传",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Administrator/Desktop/imgs/播仔0017.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

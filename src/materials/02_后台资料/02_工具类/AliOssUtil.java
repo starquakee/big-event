@@ -9,8 +9,8 @@ import java.io.InputStream;
 
 public class AliOssUtil {
     private static final String ENDPOINT = "https://oss-cn-beijing.aliyuncs.com";
-    private static final String ACCESS_KEY_ID = "LTAI5tQ8e13igWZUMTjMEEQV";
-    private static final String SECRET_ACCESS_KEY = "MffMJoM24sc59SEBEJQDb0cfBVOAC9";
+    private static final String ACCESS_KEY_ID = "xx";
+    private static final String SECRET_ACCESS_KEY = "xx";
     private static final String BUCKET_NAME = "big-event-gwd";
 
     //上传文件,返回文件的公网访问地址

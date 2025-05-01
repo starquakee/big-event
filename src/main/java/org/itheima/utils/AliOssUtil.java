@@ -12,7 +12,8 @@ public class AliOssUtil {
     private static final String ENDPOINT = "https://oss-cn-shenzhen.aliyuncs.com";
     // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
 //        EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
-    private static final String ACCESS_KEY_ID = "LTAI5t6cLfwVRUxG2SfKj6Z7";
+    private static final String ACCESS_KEY_ID_FIRST5 = "xxxxx";
+    private static final String ACCESS_KEY_ID_REST = "t6cLfwVRUxG2SfKj6Z7";
     private static final String ACCESS_KEY_SECRET_FIRST5 = "xxxxx";
     private static final String ACCESS_KEY_SECRET_REST = "2N6DV3c1HTYFHWbW7VIBcwfGR";
     private static final String REGION = "cn-shenzhen";
@@ -29,7 +30,7 @@ public class AliOssUtil {
 //                .clientConfiguration(clientBuilderConfiguration)
 //                .region(region)
 //                .build();
-        OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET_FIRST5+ACCESS_KEY_SECRET_REST);
+        OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID_FIRST5+ACCESS_KEY_ID_REST, ACCESS_KEY_SECRET_FIRST5+ACCESS_KEY_SECRET_REST);
 
         try {
             // 填写字符串。
